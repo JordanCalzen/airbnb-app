@@ -12,6 +12,8 @@ export function PropertyCard({ property }: { property: Product }) {
 				<Image
 					src={property.propertyImages[0] || "/placeholder.svg"}
 					alt={property.location}
+					width={400}
+					height={400}
 					className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
 				/>
 				<button

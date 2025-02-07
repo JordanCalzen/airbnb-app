@@ -5,15 +5,9 @@ import { PropertyGrid } from "@/components/frontend/property-grid";
 import React from "react";
 
 export default async function Home() {
-	const categoryArray = (await fetchCategories()) || [];
-
 	const propertyArray = (await fetchProduct()) || [];
 	return (
 		<div>
-			<div className="sticky z-20 top-0">
-				<MainNavbar />
-				<CategoryNav categories={categoryArray} />
-			</div>
 			<PropertyGrid properties={propertyArray} />
 		</div>
 	);
