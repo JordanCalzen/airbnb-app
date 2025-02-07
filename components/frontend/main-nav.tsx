@@ -1,5 +1,4 @@
-import { Globe, Menu, Search, TypeOutline, User } from "lucide-react";
-import Image from "next/image";
+import { Globe, Menu, Search, User } from "lucide-react";
 import React from "react";
 
 export default function MainNavbar() {

@@ -3,12 +3,13 @@
 import { Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Product } from "@prisma/client";
+import Image from "next/image";
 
 export function PropertyCard({ property }: { property: Product }) {
 	return (
 		<div className="group relative flex flex-col gap-2">
 			<div className="relative aspect-square overflow-hidden rounded-xl">
-				<img
+				<Image
 					src={property.propertyImages[0] || "/placeholder.svg"}
 					alt={property.location}
 					className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
