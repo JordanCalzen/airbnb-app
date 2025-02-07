@@ -1,6 +1,5 @@
-import { fetchCategories, fetchProduct } from "@/actions/fetch-category";
-import CategoryNav from "@/components/frontend/category-nav";
-import MainNavbar from "@/components/frontend/main-nav";
+import { fetchProduct } from "@/actions/fetch-category";
+
 import { PropertyGrid } from "@/components/frontend/property-grid";
 import React from "react";
 
