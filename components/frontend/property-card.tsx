@@ -44,6 +44,7 @@ export default function PropertyCard({ product }: { product: Product }) {
 									<Image
 										alt={product.title}
 										className="object-cover w-full h-full rounded-t-lg"
+										fill
 										src={image}
 									/>
 								</div>
