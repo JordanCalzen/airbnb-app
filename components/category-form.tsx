@@ -25,7 +25,6 @@ export default function CategoryForm() {
 
 	async function formSubmit(data: CategoryProps) {
 		data.image = imageUrl;
-		console.log(data);
 		try {
 			const res = await fetch(`${baseUrl}/api/v1/categories`, {
 				method: "POST",
@@ -34,7 +33,6 @@ export default function CategoryForm() {
 				},
 				body: JSON.stringify(data),
 			});
-			console.log(data);
 			if (res) {
 				reset();
 			}

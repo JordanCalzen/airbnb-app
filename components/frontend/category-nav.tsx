@@ -1,11 +1,12 @@
 "use client";
-
-import type { Category } from "@prisma/client";
-import Image from "next/image";
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
-import { cn } from "@/lib/utils";
+
 import Toggle from "../toggle";
+import { Category } from "@prisma/client";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function CategoryNav({
 	categories,
@@ -68,30 +69,36 @@ export default function CategoryNav({
 						msOverflowStyle: "none",
 					}}
 				>
-					{categories.map((category) => (
-						<div
-							key={category.name}
-							onClick={() => setSelectedCategory(category.name)}
-							className={cn(
-								"flex flex-col items-center justify-center min-w-fit cursor-pointer",
-								"transition-all duration-200 ease-in-out",
-								"py-4 border-b-2",
-								selectedCategory === category.name
-									? "border-black text-black"
-									: "border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-200"
-							)}
-						>
-							<div className="relative w-8 h-8 mb-2">
-								<Image
-									src={category.image || "/placeholder.svg"}
-									alt={category.name}
-									fill
-									className="object-contain"
-								/>
-							</div>
-							<span className="text-sm whitespace-nowrap">{category.name}</span>
-						</div>
-					))}
+					{categories.map((category) => {
+						return (
+							<Link key={category.id} href={`/homepage/${category.id}`}>
+								<div
+									key={category.name}
+									onClick={() => setSelectedCategory(category.name)}
+									className={cn(
+										"flex flex-col items-center justify-center min-w-fit cursor-pointer",
+										"transition-all duration-200 ease-in-out",
+										"py-4 border-b-2",
+										selectedCategory === category.name
+											? "border-black text-black"
+											: "border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-200"
+									)}
+								>
+									<div className="relative w-8 h-8 mb-2">
+										<Image
+											src={category.image || "/placeholder.svg"}
+											alt={category.name}
+											fill
+											className="object-contain"
+										/>
+									</div>
+									<span className="text-sm whitespace-nowrap">
+										{category.name}
+									</span>
+								</div>
+							</Link>
+						);
+					})}
 				</div>
 
 				{/* Right scroll button */}

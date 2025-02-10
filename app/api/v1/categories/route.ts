@@ -5,7 +5,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
 	try {
 		const data: CategoryProps = await request.json();
-		// console.log(data);
 		const category = await db.category.create({ data });
 		return NextResponse.json(
 			{
@@ -29,7 +28,11 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
 	try {
-		const categories = await db.category.findMany();
+		const categories = await db.category.findMany({
+			include: {
+				products: true,
+			},
+		});
 		return NextResponse.json(
 			{
 				message: "created",

@@ -11,6 +11,9 @@ export async function GET(
 			where: {
 				id,
 			},
+			include: {
+				products: true,
+			},
 		});
 		return NextResponse.json(
 			{
