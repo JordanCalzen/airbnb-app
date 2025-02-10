@@ -1,7 +1,7 @@
 import { fetchSingleCategory } from "@/actions/fetch-category";
-import { PropertyCard } from "@/components/frontend/property-card";
+import PropertyCard from "@/components/frontend/property-card";
+
 import { PackageX } from "lucide-react";
-import React from "react";
 
 export default async function page({
 	params,
@@ -18,7 +18,7 @@ export default async function page({
 					No Products Found
 				</h2>
 				<p className="text-gray-500 max-w-md">
-					We couldn{"'"}t find any products in the &quot;{category.name}{" "}
+					We couldn{"'"}t find any products in the &quot;{category.name} &quot;
 					category. Please check back later or try a different category.
 				</p>
 			</div>

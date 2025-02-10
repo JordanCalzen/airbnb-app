@@ -15,6 +15,7 @@ import {
 	Forward,
 	Frame,
 	GalleryVerticalEnd,
+	Home,
 	LogOut,
 	Map,
 	MoreHorizontal,
@@ -87,6 +88,11 @@ const data = {
 			icon: SquareTerminal,
 			isActive: true,
 			items: [
+				{
+					title: "Home",
+					url: "/",
+					icon: Home,
+				},
 				{
 					title: "Category Form",
 					url: "/dashboard/form-cat",

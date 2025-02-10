@@ -19,21 +19,20 @@ export async function fetchSingleCategory(id: string) {
 			cache: "no-store",
 		});
 		const results = await response.json();
-		console.log(results.data);
 		return results.data as Category & { products: Product[] };
 	} catch (error) {
 		console.log(error);
 	}
 }
 
-// export async function fetchProduct() {
-// 	try {
-// 		const response = await fetch(`${url}/api/v1/products`, {
-// 			cache: "no-store",
-// 		});
-// 		const results = await response.json();
-// 		return results.data as Product[];
-// 	} catch (error) {
-// 		console.log(error);
-// 	}
-// }
+export async function fetchProduct() {
+	try {
+		const response = await fetch(`${url}/api/v1/products`, {
+			cache: "no-store",
+		});
+		const results = await response.json();
+		return results.data as Product[];
+	} catch (error) {
+		console.log(error);
+	}
+}

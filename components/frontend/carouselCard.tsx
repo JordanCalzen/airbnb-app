@@ -15,7 +15,7 @@ import type { CarouselApi } from "@/components/ui/carousel";
 import { Product } from "@prisma/client";
 import Image from "next/image";
 
-export default function PropertyCard({ product }: { product: Product }) {
+export default function CardCarousel({ product }: { product: Product }) {
 	const [api, setApi] = useState<CarouselApi>();
 	const [current, setCurrent] = useState(0);
 	const [count, setCount] = useState(0);
