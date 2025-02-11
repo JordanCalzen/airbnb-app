@@ -36,3 +36,16 @@ export async function fetchProduct() {
 		console.log(error);
 	}
 }
+
+export async function fetchSingleProduct(id: string) {
+	try {
+		const response = await fetch(`${url}/api/v1/products/${id}`, {
+			cache: "no-store",
+		});
+		const results = await response.json();
+		return results.data as Product;
+	} catch (error) {
+		console.log(error);
+		return null;
+	}
+}

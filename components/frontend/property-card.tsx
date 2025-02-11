@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 import type { CarouselApi } from "@/components/ui/carousel";
 import { Product } from "@prisma/client";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PropertyCard({ product }: { product: Product }) {
 	const [api, setApi] = useState<CarouselApi>();
@@ -68,31 +69,35 @@ export default function PropertyCard({ product }: { product: Product }) {
 					))}
 				</div>
 			</CardContent>
-			<div className="p-6 bg-white">
-				<CardHeader className="p-0 mb-4">
-					<div className="flex items-center justify-between">
-						<h2 className="text-xl truncate text-black font-semibold">
-							{product.title}
-						</h2>
-						<div className="flex items-center gap-1">
-							<Star className="w-5 h-5 fill-current text-yellow-400" />
-							<span className="text-black">4.5</span>
+			<Link className="cursor-pointer" href={`/detailedpg/${product.id}`}>
+				<div className="p-6 bg-white">
+					<CardHeader className="p-0 mb-4">
+						<div className="flex items-center justify-between">
+							<h2 className="text-xl truncate text-black font-semibold">
+								{product.title}
+							</h2>
+							<div className="flex items-center gap-1">
+								<Star className="w-5 h-5 fill-current text-yellow-400" />
+								<span className="text-black">4.5</span>
+							</div>
 						</div>
-					</div>
-				</CardHeader>
-				<div className="space-y-4">
-					<p className="text-zinc-400">{product.description}</p>
-					<div className="flex items-center justify-between">
-						<div className="flex items-baseline gap-1">
-							<span className="text-2xl text-black font-bold">
-								${product.price}
-							</span>
-							<span className="text-zinc-400">/ night</span>
+					</CardHeader>
+					<div className="space-y-4">
+						<p className="text-zinc-400">{product.description}</p>
+						<div className="flex items-center justify-between">
+							<div className="flex items-baseline gap-1">
+								<span className="text-2xl text-black font-bold">
+									${product.price}
+								</span>
+								<span className="text-zinc-400">/ night</span>
+							</div>
+							<Button className="bg-blue-600 hover:bg-blue-700">
+								Book now
+							</Button>
 						</div>
-						<Button className="bg-blue-600 hover:bg-blue-700">Book now</Button>
 					</div>
 				</div>
-			</div>
+			</Link>
 		</Card>
 	);
 }
