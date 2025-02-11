@@ -1,5 +1,38 @@
-import { Globe, Menu, Search, User } from "lucide-react";
+import {
+	Contact,
+	Globe,
+	Home,
+	LayoutDashboardIcon,
+	Menu,
+	Search,
+	User,
+} from "lucide-react";
 import React from "react";
+import {
+	CreditCard,
+	LifeBuoy,
+	LogOut,
+	Mail,
+	MessageSquare,
+	PlusCircle,
+	Settings,
+	Users,
+} from "lucide-react";
+
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuPortal,
+	DropdownMenuSeparator,
+	DropdownMenuSub,
+	DropdownMenuSubContent,
+	DropdownMenuSubTrigger,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 
 export default function MainNavbar() {
 	return (
@@ -16,9 +49,97 @@ export default function MainNavbar() {
 			<div className="flex items-center gap-4">
 				<span className="hidden md:block">Airbnb your home</span>
 				<Globe className="text-xl cursor-pointer" />
-				<div className="flex items-center border px-3 py-1 rounded-full cursor-pointer shadow-sm hover:shadow-md">
-					<Menu className="mr-2" />
-					<User />
+				<div className="flex items-center justify-center w-10 h-10 border px-3 py-1 rounded-md cursor-pointer shadow-sm hover:shadow-md">
+					<DropdownMenu>
+						<DropdownMenuTrigger asChild>
+							<button className="bg-transparent outline-none border-none">
+								<Menu className="" />
+							</button>
+						</DropdownMenuTrigger>
+						<DropdownMenuContent className="w-56">
+							<DropdownMenuLabel>My Airbnb</DropdownMenuLabel>
+							<DropdownMenuSeparator />
+							<DropdownMenuGroup>
+								<DropdownMenuItem>
+									<Home />
+									<Link href={`/`}>
+										<span>Home</span>
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem>
+									<User />
+									<Link href={`/profile`}>
+										<span>Profile</span>
+									</Link>
+								</DropdownMenuItem>
+
+								<DropdownMenuItem>
+									<CreditCard />
+									<Link href={`/`}>
+										<span>Pricing</span>
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuItem>
+									<Settings />
+									<Link href={`/`}>
+										<span>Settings</span>
+									</Link>
+								</DropdownMenuItem>
+							</DropdownMenuGroup>
+							<DropdownMenuSeparator />
+							<DropdownMenuGroup>
+								<DropdownMenuItem>
+									<Users />
+									<Link href={`/about`}>
+										<span>About us</span>
+									</Link>
+								</DropdownMenuItem>
+								<DropdownMenuSub>
+									<DropdownMenuSubTrigger>
+										<Contact />
+										<span>Contact us</span>
+									</DropdownMenuSubTrigger>
+									<DropdownMenuPortal>
+										<DropdownMenuSubContent>
+											<DropdownMenuItem>
+												<Mail />
+												<span> Via Email</span>
+											</DropdownMenuItem>
+											<DropdownMenuItem>
+												<MessageSquare />
+												<span>Via Message</span>
+											</DropdownMenuItem>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem>
+												<PlusCircle />
+												<span>More...</span>
+											</DropdownMenuItem>
+										</DropdownMenuSubContent>
+									</DropdownMenuPortal>
+								</DropdownMenuSub>
+							</DropdownMenuGroup>
+							<DropdownMenuSeparator />
+							<DropdownMenuItem>
+								<LayoutDashboardIcon />
+								<Link href={`/dashboard`}>
+									<span>Dashboard</span>
+								</Link>
+							</DropdownMenuItem>
+							<DropdownMenuItem>
+								<LifeBuoy />
+								<Link href={`/`}>
+									<span>Support</span>
+								</Link>
+							</DropdownMenuItem>
+							<DropdownMenuSeparator />
+							<DropdownMenuItem>
+								<LogOut />
+								<Link href={`/`}>
+									<span>LogOut</span>
+								</Link>
+							</DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
 				</div>
 			</div>
 		</nav>

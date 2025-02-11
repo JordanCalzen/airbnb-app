@@ -301,7 +301,9 @@ export default function DetailPage({ property }: { property: Product | null }) {
 
 							<div className="space-y-4">
 								<div className="flex justify-between">
-									<span className="underline">$450 x 5 nights</span>
+									<span className="underline">
+										${property?.price} x 5 nights
+									</span>
 									<span>$2,250</span>
 								</div>
 								<div className="flex justify-between">
