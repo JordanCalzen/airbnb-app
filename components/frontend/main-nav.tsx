@@ -134,16 +134,9 @@ export default function MainNavbar() {
 								</Link>
 							</DropdownMenuItem>
 							<DropdownMenuSeparator />
-							<DropdownMenuItem>
+							<DropdownMenuItem onClick={() => logout()}>
 								<LogOut />
-								<Link href={`/`}>
-									<button
-										onClick={() => logout()}
-										className="border-none outline-none bg-transparent"
-									>
-										<span>LogOut</span>
-									</button>
-								</Link>
+								LogOut
 							</DropdownMenuItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
