@@ -1,3 +1,4 @@
+"use client";
 import {
 	Contact,
 	Globe,
@@ -33,6 +34,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import { logout } from "@/actions/auth";
 
 export default function MainNavbar() {
 	return (
@@ -135,7 +137,12 @@ export default function MainNavbar() {
 							<DropdownMenuItem>
 								<LogOut />
 								<Link href={`/`}>
-									<span>LogOut</span>
+									<button
+										onClick={() => logout()}
+										className="border-none outline-none bg-transparent"
+									>
+										<span>LogOut</span>
+									</button>
 								</Link>
 							</DropdownMenuItem>
 						</DropdownMenuContent>
