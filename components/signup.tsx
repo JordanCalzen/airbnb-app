@@ -108,7 +108,7 @@ export default function Signup() {
 							</div>
 							<div className="sm:col-span-2 md:col-span-1">
 								<ImageInput
-									title="Category Image"
+									title="Profile photo"
 									imageUrl={imageUrl}
 									setImageUrl={setImageUrl}
 									endpoint="categoryImage"
