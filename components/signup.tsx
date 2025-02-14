@@ -50,6 +50,9 @@ export default function Signup() {
 				toast.success("created successfully");
 				router.push("/login");
 				router.refresh;
+			} else if (response.status === 409) {
+				setIsLoading(false);
+				toast.error("User Already exists");
 			}
 		} catch (error) {
 			console.log(error);
