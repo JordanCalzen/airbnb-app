@@ -36,18 +36,16 @@ export default function LoginForm() {
 				body: JSON.stringify(data),
 			});
 
-			if (response) {
-				reset();
-			}
 			if (response.status === 403) {
 				setErr("Wrong credentials");
 				toast.error("Wrong credentials");
 				setIsLoading(false);
+				reset();
 			} else if (response.status === 201) {
 				setIsLoading(false);
 				toast.success("Logged in successfully");
 				router.push("/");
-				router.refresh;
+				router.refresh();
 			}
 		} catch (error) {
 			console.log(error);
