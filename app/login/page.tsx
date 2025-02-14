@@ -1,10 +1,10 @@
-import DashBoard from "@/components/backend-components/dashboard";
+import LoginForm from "@/components/frontend/login";
 import React from "react";
 
 export default function page() {
 	return (
 		<div>
-			<DashBoard />
+			<LoginForm />
 		</div>
 	);
 }

@@ -67,7 +67,7 @@ export default function CategoryForm() {
 								title="Category Image"
 								imageUrl={imageUrl}
 								setImageUrl={setImageUrl}
-								endpoint="imageUploader"
+								endpoint="categoryImage"
 							/>
 						</div>
 

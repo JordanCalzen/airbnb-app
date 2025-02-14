@@ -216,7 +216,7 @@ export default function AirbnbListingForm({
 							title="Property Images"
 							imageUrls={productImages}
 							setImageUrls={setProductImages}
-							endpoint="imageUploader"
+							endpoint="productImages"
 						/>
 					</div>
 					<div className="space-y-4">

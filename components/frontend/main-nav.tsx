@@ -68,8 +68,8 @@ export default function MainNavbar() {
 								</DropdownMenuItem>
 								<DropdownMenuItem>
 									<User />
-									<Link href={`/profile`}>
-										<span>Profile</span>
+									<Link href={`/login`}>
+										<span>Login</span>
 									</Link>
 								</DropdownMenuItem>
 

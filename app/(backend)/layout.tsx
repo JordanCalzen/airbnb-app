@@ -1,8 +1,18 @@
 import SideBar from "@/components/backend-components/sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { getSession } from "@/lib/dal";
+import { redirect } from "next/navigation";
 import React, { ReactNode } from "react";
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default async function DashboardLayout({
+	children,
+}: {
+	children: ReactNode;
+}) {
+	const user = await getSession();
+	if (!user) {
+		redirect("/login");
+	}
 	return (
 		<SidebarProvider>
 			<div
