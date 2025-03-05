@@ -134,7 +134,7 @@ export default function MainNavbar() {
 								</Link>
 							</DropdownMenuItem>
 							<DropdownMenuSeparator />
-							<DropdownMenuItem onClick={() => logout()}>
+							<DropdownMenuItem>
 								<LogOut />
 								LogOut
 							</DropdownMenuItem>

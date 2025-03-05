@@ -38,6 +38,7 @@ export async function POST(request: NextRequest) {
 		console.log(error);
 		return NextResponse.json(
 			{
+				message: "Failed",
 				data: null,
 				error: "Something went wrong",
 			},

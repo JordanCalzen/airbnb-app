@@ -1,10 +1,11 @@
 import { db } from "@/prisma/db";
+import { SingleQueryResponse } from "@/types/type";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
 	request: NextRequest,
 	{ params }: { params: Promise<{ id: string }> }
-) {
+): Promise<NextResponse<SingleQueryResponse>> {
 	try {
 		const { id } = await params;
 		const singleProduct = await db.product.findFirst({
@@ -27,6 +28,7 @@ export async function GET(
 		console.log(error);
 		return NextResponse.json(
 			{
+				message: "Failed",
 				data: null,
 				error: "something went wrong",
 			},

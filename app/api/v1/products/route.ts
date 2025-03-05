@@ -1,5 +1,6 @@
 import { FormValues } from "@/components/airbnb-listing-form";
 import { db } from "@/prisma/db";
+import { QueriesResponse } from "@/types/type";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -29,7 +30,7 @@ export async function POST(request: NextRequest) {
 	}
 }
 
-export async function GET() {
+export async function GET(): Promise<NextResponse<QueriesResponse>> {
 	try {
 		const createdProducts = await db.product.findMany();
 		return NextResponse.json(
@@ -44,6 +45,7 @@ export async function GET() {
 		console.log(error);
 		return NextResponse.json(
 			{
+				message: "Failed",
 				data: null,
 				error: "something went wrong",
 			},

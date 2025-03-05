@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -6,6 +7,7 @@ import {
 	ChevronRight,
 	Flag,
 	Heart,
+	Loader,
 	MapPin,
 	Share,
 	Star,
@@ -38,14 +40,22 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { Product } from "@prisma/client";
+import { useProduct } from "@/app/hooks/useProducts";
 
-export default function DetailPage({ property }: { property: Product | null }) {
+export default function DetailPage({ id }: { id: string }) {
+	const { product, error, isLoading } = useProduct(id);
+	if (isLoading) {
+		return (
+			<div className="flex min-h-[60vh] items-center justify-center">
+				<Loader className="w-14 h-14 animate-spin" />
+			</div>
+		);
+	}
 	return (
 		<div className="max-w-6xl p-4 mx-auto lg:px-6 sm:py-8 md:py-10">
 			<section className="flex-col hidden gap-4 pb-4 sm:flex sm:flex-row sm:items-center sm:pb-8">
 				<h1 className="text-xl font-semibold tracking-tight lg:text-3xl">
-					{property?.title}
+					{product?.product?.title}
 				</h1>
 				<nav className="flex items-center justify-center gap-1 sm:ml-auto">
 					<Button
@@ -81,7 +91,7 @@ export default function DetailPage({ property }: { property: Product | null }) {
 					>
 						<Image
 							src={
-								(property?.propertyImages[0] as string) ||
+								(product?.product?.propertyImages[0] as string) ||
 								`/my-placeholder.avif`
 							}
 							width={800}
@@ -97,7 +107,7 @@ export default function DetailPage({ property }: { property: Product | null }) {
 					>
 						<Image
 							src={
-								(property?.propertyImages[1] as string) ||
+								(product?.product?.propertyImages[1] as string) ||
 								`/my-placeholder.avif`
 							}
 							width={400}
@@ -112,7 +122,7 @@ export default function DetailPage({ property }: { property: Product | null }) {
 					>
 						<Image
 							src={
-								(property?.propertyImages[2] as string) ||
+								(product?.product?.propertyImages[2] as string) ||
 								`/my-placeholder.avif`
 							}
 							width={400}
@@ -127,7 +137,7 @@ export default function DetailPage({ property }: { property: Product | null }) {
 					>
 						<Image
 							src={
-								(property?.propertyImages[0] as string) ||
+								(product?.product?.propertyImages[0] as string) ||
 								`/my-placeholder.avif`
 							}
 							width={400}
@@ -142,7 +152,7 @@ export default function DetailPage({ property }: { property: Product | null }) {
 					>
 						<Image
 							src={
-								(property?.propertyImages[1] as string) ||
+								(product?.product?.propertyImages[1] as string) ||
 								`/my-placeholder.avif`
 							}
 							width={400}
@@ -167,11 +177,13 @@ export default function DetailPage({ property }: { property: Product | null }) {
 					<div className="flex items-center justify-between">
 						<div>
 							<h2 className="text-2xl font-semibold">
-								{property?.description}
+								{product?.product?.description}
 							</h2>
 							<p className="text-muted-foreground">
-								{property?.maxGuests} guests · {property?.bedrooms} bedrooms ·{" "}
-								{property?.bedrooms} beds · {property?.bathrooms} baths
+								{product?.product?.maxGuests} guests ·{" "}
+								{product?.product?.bedrooms} bedrooms ·{" "}
+								{product?.product?.bedrooms} beds ·{" "}
+								{product?.product?.bathrooms} baths
 							</p>
 						</div>
 						<Avatar className="w-14 h-14 border">
@@ -185,7 +197,7 @@ export default function DetailPage({ property }: { property: Product | null }) {
 							<Award className="w-8 h-8 mt-1" />
 							<div>
 								<h3 className="font-semibold">
-									{property?.title} is a Superhost
+									{product?.product?.title} is a Superhost
 								</h3>
 								<p className="text-sm text-muted-foreground">
 									Superhosts are experienced, highly rated hosts who are
@@ -196,7 +208,7 @@ export default function DetailPage({ property }: { property: Product | null }) {
 						<div className="flex gap-4 p-4 border rounded-lg">
 							<MapPin className="w-8 h-8 mt-1" />
 							<div>
-								<h3 className="font-semibold">{property?.location}</h3>
+								<h3 className="font-semibold">{product?.product?.location}</h3>
 								<p className="text-sm text-muted-foreground">
 									95% of recent guests gave the location a 5-star rating.
 								</p>
@@ -233,7 +245,7 @@ export default function DetailPage({ property }: { property: Product | null }) {
 					<div className="grid gap-4">
 						<h3 className="text-xl font-semibold">What this place offers</h3>
 						<div className="grid gap-4 sm:grid-cols-2">
-							{property?.amenities.map((amenity, i) => {
+							{product?.product?.amenities.map((amenity, i) => {
 								return <span key={i}>{amenity}</span>;
 							})}
 						</div>
@@ -247,7 +259,9 @@ export default function DetailPage({ property }: { property: Product | null }) {
 					<Card className="sticky top-8">
 						<CardHeader>
 							<CardTitle className="flex items-baseline gap-2">
-								<span className="text-2xl font-bold">${property?.price}</span>
+								<span className="text-2xl font-bold">
+									${product?.product?.price}
+								</span>
 								<span className="text-base font-normal text-muted-foreground">
 									night
 								</span>
@@ -302,13 +316,13 @@ export default function DetailPage({ property }: { property: Product | null }) {
 							<div className="space-y-4">
 								<div className="flex justify-between">
 									<span className="underline">
-										${property?.price} x 5 nights
+										${product?.product?.price} x 5 nights
 									</span>
 									<span>$2,250</span>
 								</div>
 								<div className="flex justify-between">
 									<span className="underline">Cleaning fee</span>
-									<span>${property?.cleaning_fee}</span>
+									<span>${product?.product?.cleaning_fee}</span>
 								</div>
 								<div className="flex justify-between">
 									<span className="underline">Service fee</span>
