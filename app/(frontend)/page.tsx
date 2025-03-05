@@ -1,12 +1,17 @@
 "use client";
 import CardCarousel from "@/components/frontend/carouselCard";
 import { useProducts } from "../hooks/useProducts";
+import { Loader } from "lucide-react";
 
 export default function page() {
 	// const products = (await fetchProduct()) || [];
 	const { allProducts, isLoading, error } = useProducts();
 	if (isLoading) {
-		return <h1>Loading...</h1>;
+		return (
+			<div className="flex min-h-[60vh] items-center justify-center">
+				<Loader className="w-14 h-14 animate-spin" />
+			</div>
+		);
 	}
 	return (
 		<div className="mx-auto max-w-7xl px-4 py-8">
